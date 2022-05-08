@@ -56,16 +56,20 @@ def choice_checker(question, valid_list, error):
 
 # list for checking responses
 
+
 yes_no_list = ["yes", "no"]
 rps_list = ["rock", "paper", "scissors", "xxx"]
 
+game_summary = []
+
 # Ask user if they have played before.
-# If 'yes_no_listes', show instructions
+# If 'no', show instructions
 
 
 # Ask user for # of rounds then loop...
-
 rounds_played = 0 
+
+#intialise lost / drawn counters
 rounds_drawn = 0
 rounds_lost = 0
 
@@ -73,7 +77,6 @@ choose_instruction = "Please choose rock (r), paper " \
                      "(p) or scissors (s)"
 
 # Ask user for # of rounds, <enter> for infinate mode
-
 rounds = check_rounds()
 
 end_game = "no"
@@ -106,6 +109,7 @@ while end_game =="no":
 
   # get computer choice
   comp_choice = random.choice(rps_list[:-1])
+  print("comp choice", comp_choice)
 
   # compare choices
   if comp_choice == user_choice:
@@ -122,15 +126,18 @@ while end_game =="no":
     rounds_lost += 1
 
   if result == "tie":
-    print("Result: It's a tie")
+    feedback = "Result: It's a tie"
   else:
     feedback = "{} vs {} - you {}".format(user_choice, comp_choice, result)
 
+  outcome = "Round {}: {}".format(rounds_played + 1, feedback)
+  game_summary.append(outcome)
+
 
   # Output results...
-    print (feedback)
+  print (feedback)
 
-    rounds_played += 1
+  rounds_played += 1
   # end game if requested # of rounds has been played
   if rounds_played == rounds:
     break
@@ -139,6 +146,7 @@ while end_game =="no":
 # If 'yes' show game history
 
 #show game statistics
+    
 # Quick calculations (stats)
 rounds_won = rounds_played - rounds_lost - rounds_drawn
 
@@ -148,4 +156,11 @@ print('***** End Game Summary *****')
 print("won: {} \t|\t Lost: {} \t|\t Draw: " 
       "{}".format(rounds_won, rounds_lost, rounds_drawn))
 print()
+
+print("***** Game History *****")
+for game in game_summary:
+  print (game)
+
+print()
+
 print("Thanks for playing")
