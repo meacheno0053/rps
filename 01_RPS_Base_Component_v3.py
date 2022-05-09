@@ -1,9 +1,82 @@
 import random
 
+# Functions go here...
+def yes_no (question):
+  valid = False
+  while not valid:
+    response = input(question).lower()
+    print()
+    if response == "yes" or response == "y": 
+      print("-- You Chose Yes --")
+      return "yes"
+    
+    elif response == "no" or response == "n": 
+      return "no"
+    
+    else:
+      print("Please answer yes / no")
+
+
+
+def instructions ():
+  print()
+  print("**** How to Play ****")
+  print()
+  print("""
+
+***** INSTRUCTIONS *****
+
+Choose rock / paper / scissors
+
+Rock beats Scissors
+Scissors beats Paper
+Paper beats Rock
+
+Press <ENTER> To Play Infinate Mode
+
+Use 'xxx' to quit
+
+Game Summary and History Will Be Displayed After The Game
+        
+Have fun! :)
+        
+        """)
+
+  return ""
+
+
+# Decoration
+def statement_generator(statement, decoration, style):
+
+  sides = decoration * 3
+
+  statement = "{} {} {}".format(sides, statement, sides)
+  top_bottom = decoration * len(statement)
+
+  if style == 3:
+  
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
+  else:
+    print(statement)
+
+  return ""
+
+# Main Routine goes here
+statement_generator("** Welcome To ROCK vs PAPER vs SCISSORS **", "*", 3)
+print()
+played_before = yes_no("?? have you played before? ??")
+print()
+if played_before == "no":
+  instructions()
+print()
+
+   
 # Functions go here
 def check_rounds():
   while True:
-    response = input ("How many rounds: ")
+    response = input ("<< How many rounds: >> ")
 
     round_error = "Please type either <Enter> " \
                   "or an integer that is more than 0\n"
@@ -87,7 +160,7 @@ while end_game =="no":
   # Rounds Heading
   print()
   if rounds =="":
-    heading = "Continuous Mode: Round {}".format(rounds_played +1)
+    heading = "Infinate Mode: Round {}".format(rounds_played +1)
   else:
     heading = "Round {} of {}".format(rounds_played + 1, rounds)    
     
@@ -109,7 +182,7 @@ while end_game =="no":
 
   # get computer choice
   comp_choice = random.choice(rps_list[:-1])
-  print("comp choice", comp_choice)
+  print("computer chose", comp_choice)
 
   # compare choices
   if comp_choice == user_choice:
@@ -163,4 +236,4 @@ for game in game_summary:
 
 print()
 
-print("Thanks for playing")
+print("^^^ Thanks for playing ^^^")
