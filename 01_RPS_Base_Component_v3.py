@@ -28,10 +28,18 @@ def instructions ():
 
 Choose rock / paper / scissors
 
+r - rock
+p - paper
+s - scissors
+
 Rock beats Scissors
 Scissors beats Paper
 Paper beats Rock
 
+Choose a number of rounds to play
+
+        <-OR->
+        
 Press <ENTER> To Play Infinate Mode
 
 Use 'xxx' to quit
